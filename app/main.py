@@ -111,7 +111,7 @@ def initialize_board(data):
 
 def clear_board(data):
     ## Reset to zeros
-    board = [[0 for x in range(data['height']) for x in range(data['width'])]
+    board = [[0 for x in range(data['height'])] for x in range(data['width'])]
 
 def profile_board(data):
     clear_board(data)
@@ -137,7 +137,7 @@ def profile_board(data):
 
 def print_board(data):
     for column in board:
-        print column
+        print column + "\n"
     print "\n\n"
 
 # Expose WSGI app (so gunicorn can find it)
