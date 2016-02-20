@@ -15,7 +15,7 @@ def index():
     )
 
     return {
-        'color': '#00ff00',
+        'color': '#746876',
         'head': head_url
     }
 
@@ -28,7 +28,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': 'ARBOK!'
     }
 
 
@@ -41,7 +41,7 @@ def move():
 
     return {
         'move': 'north',
-        'taunt': 'battlesnake-python!'
+        'taunt': 'ARBOK!'
     }
 
 
@@ -53,7 +53,7 @@ def end():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': 'ARBOK!'
     }
 
 
