@@ -13,65 +13,57 @@ possible_directions = {
 def dfs(board, our_head, food):
     # distances = []
     smallest = len(board)
-    move = ''
+    best_move = ''
     for coord in food:
         head = our_head[:]
-        distance, moves = __do_search(board, head, coord)
+        distance, move = __do_search(board, head, coord)
         if distance < board:
             smallest = distance
-            move = moves[0]
+            best_move = move
             print distance
         # distances.append(distance)
-    return move
+    return best_move
 
 # [2,8], [0,7]
 def __do_search(board, our_head, item):
     distance = 0
-    current_coord = our_head
+    our_head
     moves = []
     # TODO: remove direction that tail is in
-    while not __is_equal(current_coord, item):
 
-        potential_moves = {
-            'north' : 1.0,
-            'south' : 1.0,
-            'east' : 1.0,
-            'west' : 1.0
-        }
+    potential_moves = {
+        'north' : 1.0,
+        'south' : 1.0,
+        'east' : 1.0,
+        'west' : 1.0
+    }
 
-        __find_enemy_snakes(board, our_head, potential_moves)
-        __detect_board_limits(board, our_head, potential_moves)
+    __find_enemy_snakes(board, our_head, potential_moves)
+    __detect_board_limits(board, our_head, potential_moves)
 
-        x_delta = current_coord[0] - item[0]
-        if not x_delta == 0:
-            if board[current_coord[0] + 1][current_coord[1]] == 4:
-                __increase_weight(potential_moves, 'east', 0)
-            if x_delta < 0: # go right/east
-                current_coord[0] += 1
-                __increase_weight(potential_moves, 'east', 2)
-            else: # go left/west
-                current_coord[0] -= 1
-                __increase_weight(potential_moves, 'west', 2)
-        else:
-            __increase_weight(potential_moves, 'east', 0.5)
-            __increase_weight(potential_moves, 'west', 0.5)
+    x_delta = our_head[0] - item[0]
 
-        y_delta = current_coord[1] - item[1]
-        if not y_delta == 0:
+    if x_delta < 0: # go right/east
+        __increase_weight(potential_moves, 'east', 2)
+    elif x_delta > 0: # go left/west
+        __increase_weight(potential_moves, 'west', 2)
+    else:
+        __increase_weight(potential_moves, 'west', 1.5)
+        __increase_weight(potential_moves, 'east', 1.5)
 
-            if y_delta < 0: # go down/south
-                current_coord[1] += 1
-                __increase_weight(potential_moves, 'south', 2)
-            else: # go up/north
-                current_coord[1] -= 1
-                __increase_weight(potential_moves, 'north', 2)
+    y_delta = our_head[1] - item[1]
 
-        # print current_coord
-        move = __get_best_move(potential_moves)
-        moves.append(move)
-        distance += 1
+    if y_delta < 0: # go down/south
+        __increase_weight(potential_moves, 'south', 2)
+    elif x_delta > 0: # go up/north
+        __increase_weight(potential_moves, 'north', 2)
+    else:
+        __increase_weight(potential_moves, 'north', 1.5)
+        __increase_weight(potential_moves, 'south', 1.5)
 
-    return distance, moves
+
+    move = __get_best_move(potential_moves)
+    return distance, move
 
 def __find_enemy_snakes(board, our_head, moves):
     if board[our_head[0]][our_head[1] + 1] == 3 or board[our_head[0]][our_head[1] + 1] == 4: # other snake above/north
