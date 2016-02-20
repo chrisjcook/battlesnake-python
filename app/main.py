@@ -1,6 +1,6 @@
 import bottle
 import os
-
+import random
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -15,7 +15,7 @@ def index():
     )
 
     return {
-        'color': '#746876',
+        'color': '#00ff00',
         'head': head_url
     }
 
@@ -27,7 +27,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': 'ARBOK!'
+        'taunt': 'battlesnake-python!'
     }
 
 
@@ -37,9 +37,10 @@ def move():
 
     # TODO: Do things with data
 
+
     return {
-        'move': 'north',
-        'taunt': 'ARBOK!'
+        'move': random.choice(['north', 'east', 'west', 'south']),
+        'taunt': 'battlesnake-python!'
     }
 
 
@@ -50,7 +51,7 @@ def end():
     # TODO: Do things with data
 
     return {
-        'taunt': 'ARBOK!'
+        'taunt': 'battlesnake-python!'
     }
 
 
