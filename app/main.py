@@ -41,10 +41,10 @@ def move():
     for x in snakes:
         if x.['id'] == arbok_id:
             arbok = x
-    food = data.['food']
+    food = data['food']
     first_food = food[0]
 
-    arbok_head = arbok.['coords'][0]
+    arbok_head = arbok['coords'][0]
 
     x_dist = food[0] - arbok_head[0]
     y_dist = food[1] - arbok_head[1]
