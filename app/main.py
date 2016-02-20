@@ -81,12 +81,12 @@ def end_game(data):
         pass
     else:
         if get_health(data) < 35:
+            pass
             #go find food
         else:
-        #ATTACK!!!
-        my_head, my_body, target_head, target_body = determine_position(data)
-        
-        #globals
+            #ATTACK!!!
+            my_head, my_body, target_head, target_body = determine_position(data)
+            #globals
 
 
     return {
