@@ -1,6 +1,5 @@
 def check_around(data):
     arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
-    snakes = data['snakes']
     filled_blocks = []
     for x in snakes:
         if x['id'] == arbok_id:
@@ -11,10 +10,13 @@ def check_around(data):
     x = arbok_head[0]
     y = arbok_head[1]
     valid = [[x, y + 1], [x, y - 1], [x + 1, y], [x -1, y]]
+    direction = ['south', 'north', 'east', 'west']
+    x = 1
     for c in valid:
         if c in filled_blocks:
-            valid.remove(c)
-    return valid
+            del direction[x]
+        x = x + 1
+    return direction
 
 def nearest_food(data, arbok_head, food):
     nearest = food[0]
@@ -65,26 +67,26 @@ def find_food(data):
                 # if food is below arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
-                    if [arbok_head[0] + 1, arbok_head[1]] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'south' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
                 else:
-                    if [arbok_head[0], arbok_head[1] + 1] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'east' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
             else:
                 # if food is above arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
-                    if [arbok_head[0] + 1, arbok_head[1]] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'east' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
                 else:
-                    if [arbok_head[0], arbok_head[1] + 1] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'north' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
         else:
@@ -92,26 +94,26 @@ def find_food(data):
                 # if food is below arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally west
-                    if [arbok_head[0] - 1, arbok_head[1]] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'west' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'west', 'taunt': 'battlesnake-python!'}
                 else:
-                    if [arbok_head[0], arbok_head[1] + 1] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'south' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
                 # if food is above arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally west
-                    if [arbok_head[0] - 1, arbok_head[1]] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'west' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'west', 'taunt': 'battlesnake-python!'}
                 else:
-                    if [arbok_head[0], arbok_head[1] + 1] not in valid:
-                        return valid_coord(data, arbok_head, valid)
+                    if 'north' not in valid:
+                        return random.choice(valid)
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
     else:
