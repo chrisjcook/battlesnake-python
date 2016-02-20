@@ -109,6 +109,8 @@ def clear_board(data):
     board = [[0 for x in range(data['height']) for x in range(data['width'])]
 
 def profile_board(data):
+    clear_board(data)
+
     ## Set snake bodies
     for snake in data['snakes']:
         for coord in snake['coords']:
