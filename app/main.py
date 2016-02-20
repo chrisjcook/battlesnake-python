@@ -7,6 +7,14 @@ def get_health(data):
             return snake.get('health')
     return 90
 
+def get_number_of_snakes(data):
+    number_of_snakes = 0
+    for snake in data.get('snakes'):
+        if snake.get('status') = 'alive':
+            number_of_snakes = number_of_snakes + 1
+
+    return number_of_snakes
+
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -42,6 +50,32 @@ def move():
 
     # TODO: Do things with data
 
+    number_of_snakes = get_number_of_snakes(data)
+
+    if number_of_snakes >= 4:
+        result = base_game()
+    elif number_of_snakes is 3:
+        result = mid_game()
+    elif number_of_snakes is 2:
+        result = end_game()
+    else:
+        result = base_game()
+
+    return result
+
+def base_game():
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
+
+def mid_game():
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
+
+def end_game():
     return {
         'move': 'north',
         'taunt': 'ARBOK!'
