@@ -69,6 +69,9 @@ def move():
     else:
         result = base_game()
 
+    ## TEST
+    result['taunt'] = print_board(data)
+
     return result
 
 def base_game():
