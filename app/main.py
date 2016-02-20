@@ -40,14 +40,6 @@ def start():
 def move():
     data = bottle.request.json
 
-    return {'move': 'east', 'taunt': 'ARBOK!'}
-
-    #if i ==0:
-    #    i+=1
-    #    return {'move': 'north', 'taunt': 'ARBOK!'}
-    #else:
-    #    return {'move': 'south', 'taunt': 'ARBOK!'}
-
     # TODO: Do things with data
 
     return {
