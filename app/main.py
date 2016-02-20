@@ -24,7 +24,6 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
-    print "START: " + data
 
     # TODO: Do things with data
 
@@ -36,7 +35,6 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    print "MOVE: " + data
     if i ==0:
         i+=1
         return {'move': 'north', 'taunt': 'ARBOK!'}
@@ -54,7 +52,6 @@ def move():
 @bottle.post('/end')
 def end():
     data = bottle.request.json
-    print "END: " + data
 
     # TODO: Do things with data
 
