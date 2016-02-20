@@ -48,8 +48,8 @@ def move():
 
         arbok_head = arbok['coords'][0]
 
-        x_dist = food[0] - arbok_head[0]
-        y_dist = food[1] - arbok_head[1]
+        x_dist = first_food[0] - arbok_head[0]
+        y_dist = first_food[1] - arbok_head[1]
 
         if x_dist > 0:
             # if food is to right of arbok
