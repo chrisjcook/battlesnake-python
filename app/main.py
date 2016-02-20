@@ -68,8 +68,8 @@ def move():
     else:
         result = base_game()
 
-    board_string = print_board()
-    result['taunt'] = board_string
+    # board_string = print_board()
+    # result['taunt'] = board_string
 
     return result
 
