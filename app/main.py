@@ -4,6 +4,20 @@ import os
 board = []
 arbok_id = "9fccbadb-30bc-4f6e-845f-057e1ea32975"
 
+def get_health(data):
+    for snake in data.get('snakes'):
+        if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975':
+            return snake.get('health')
+    return 90
+
+def get_number_of_snakes(data):
+    number_of_snakes = 0
+    for snake in data.get('snakes'):
+        if snake.get('status') = 'alive':
+            number_of_snakes = number_of_snakes + 1
+
+    return number_of_snakes
+
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -30,7 +44,7 @@ def start():
     initialize_board(data)
 
     return {
-        'taunt': 'ARBOK!'
+        'taunt': 'ARBOK!!!'
     }
 
 
@@ -41,6 +55,32 @@ def move():
     ## Update board with new positions
     profile_board(data)
 
+    number_of_snakes = get_number_of_snakes(data)
+
+    if number_of_snakes >= 4:
+        result = base_game()
+    elif number_of_snakes is 3:
+        result = mid_game()
+    elif number_of_snakes is 2:
+        result = end_game()
+    else:
+        result = base_game()
+
+    return result
+
+def base_game():
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
+
+def mid_game():
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
+
+def end_game():
     return {
         'move': 'north',
         'taunt': 'ARBOK!'
