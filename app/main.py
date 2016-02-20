@@ -2,7 +2,6 @@ import bottle
 import os
 import random
 
-arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -35,6 +34,8 @@ def start():
 
 @bottle.post('/move')
 def move():
+    arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
+
     data = bottle.request.json
 
     snakes = data['snakes']
