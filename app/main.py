@@ -101,16 +101,24 @@ def end():
     }
 
 def initialize_board(data):
+    global board_width
+    global board_height
+
     ## Initialize to zeros
     board_width = data['width']
     board_height = data['height']
     clear_board()
 
 def clear_board():
+    global board
+
     ## Reset to zeros
     board = [[0 for x in range(board_height)] for x in range(board_width)]
 
 def profile_board(data):
+    global board
+
+    ## Reset all spots to zero
     clear_board(data)
 
     ## Set snake bodies
@@ -132,18 +140,15 @@ def profile_board(data):
     for food in data['food']:
         board[food[0]][food[1]] = 5
 
+## Pretty terrible print function, but use for rudimentary testing
 def print_board():
+    global board
+
     for column in board:
-        print column + "\n"
-    print "\n\n"
+        print column
+    print "\n"
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
 if __name__ == '__main__':
-    ## TEST
-    board_width = 10;
-    board_height = 10;
-    clear_board()
-    print_board()
-
     bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', '8080'))
