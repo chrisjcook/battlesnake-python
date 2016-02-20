@@ -15,7 +15,14 @@ def check_around(data):
     x = 1
     for c in valid:
         if c in filled_blocks:
-            del direction[x]
+            if x == 1:
+                direction.remomve('south')
+            elif x == 2:
+                direction.remomve('north')
+            elif x == 3:
+                direction.remomve('east')
+            else:
+                direction.remomve('west')
         x = x + 1
     return direction
 
@@ -55,15 +62,15 @@ def find_food(data):
                 # if food is below arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
-                    if 'east' not in valid:
-                        return random.choice(valid)
-                    else:
-                        return {'move': 'east', 'taunt': 'battlesnake-python!'}
-                else:
                     if 'south' not in valid:
                         return random.choice(valid)
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
+                else:
+                    if 'east' not in valid:
+                        return random.choice(valid)
+                    else:
+                        return {'move': 'east', 'taunt': 'battlesnake-python!'}
             else:
                 # if food is above arbok
                 if abs(x_dist) > abs(y_dist):
