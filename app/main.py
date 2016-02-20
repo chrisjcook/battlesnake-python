@@ -5,7 +5,7 @@ def get_health(data):
     for snake in data.get('snakes'):
         if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975':
             return snake.get('health')
-    return 100
+    return 90
 
 @bottle.route('/static/<path:path>')
 def static(path):
