@@ -4,7 +4,6 @@ import os
 board = []
 board_width = 0
 board_height = 0
-
 arbok_id = "9fccbadb-30bc-4f6e-845f-057e1ea32975"
 
 def get_health(data):
@@ -117,6 +116,7 @@ def clear_board():
 
 def profile_board(data):
     global board
+    global arbok_id
 
     ## Reset all spots to zero
     clear_board(data)
@@ -131,7 +131,7 @@ def profile_board(data):
 
     ## Set snake heads
     for snake in data['snakes']:
-        if snake['id'] is arbok_id:
+        if snake['id'] == arbok_id:
             board[snake['coords'][0][0]][snake['coords'][0][1]] = 2
         else:
             board[snake['coords'][0][0]][snake['coords'][0][1]] = 4
