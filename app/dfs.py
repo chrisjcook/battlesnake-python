@@ -29,6 +29,7 @@ def __do_search(board, our_head, item):
     distance = 0
     current_coord = our_head
     moves = []
+    # TODO: remove direction that tail is in
     while not __is_equal(current_coord, item):
 
         potential_moves = {
@@ -37,6 +38,9 @@ def __do_search(board, our_head, item):
             'east' : 1.0,
             'west' : 1.0
         }
+
+        __find_enemy_snakes(board, our_head, potential_moves)
+        __detect_board_limits(board, our_head, potential_moves)
 
         x_delta = current_coord[0] - item[0]
         if not x_delta == 0:
@@ -69,8 +73,28 @@ def __do_search(board, our_head, item):
 
     return distance, moves
 
-# def __find_enemy_snakes(board):
+def __find_enemy_snakes(board, our_head, moves):
+    if board[our_head[0]][our_head[1] + 1] == 3 or board[our_head[0]][our_head[1] + 1] == 4: # other snake above/north
+        __increase_weight(moves, 'north', 0)
+    if board[our_head[0] + 1][our_head[1]] == 3 or board[our_head[0] + 1][our_head[1]] == 4: # other snake right/east
+        __increase_weight(moves, 'east', 0)
+    if board[our_head[0] - 1][our_head[1]] == 3 or board[our_head[0] - 1][our_head[1]] == 4: # other snake left/west
+        __increase_weight(moves, 'west', 0)
+    if board[our_head[0]][our_head[1] - 1] == 3 or board[our_head[0]][our_head[1] - 1] == 4: # other snake down/south
+        __increase_weight(moves, 'south', 0)
 
+def __detect_board_limits(board, our_head, moves):
+    x = our_head[0]
+    y = our_head[1]
+
+    if y - 1 < 0:
+        __increase_weight(moves, 'south', 0)
+    if y + 1 >= 17:
+        __increase_weight(moves, 'north', 0)
+    if x + 1 >= 17:
+        __increase_weight(moves, 'east', 0)
+    if x - 1 < 0:
+        __increase_weight(moves, 'west', 0)
 
 def __increase_weight(weights, direction, factor):
     weights[direction] *= factor
