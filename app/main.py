@@ -144,9 +144,10 @@ def profile_board(data):
 def print_board():
     global board
 
+    board_string = ''
+
     for column in board:
-        print column
-    print "\n"
+        board_string += ''.join(str(cell) for cell in column) + '\n'
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
