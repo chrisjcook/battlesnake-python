@@ -16,8 +16,8 @@ def check_around(data):
             valid.remove(c)
     return valid
 
-def nearest_food(data, arbok_head):
-    food = data['food']
+def nearest_food(data, arbok_head, food):
+
     nearest = food[0]
     n_total = abs(nearest[0] - arbok_head[0]) + abs(nearest[1] - arbok_head[1])
     for f in food:
@@ -38,10 +38,11 @@ def find_food(data):
             arbok = x
 
     valid = check_around(data)
+    food = data['food']
     if food:
         arbok_head = arbok['coords'][0]
 
-        nearest = nearest_food(data, arbok_head)
+        nearest = nearest_food(data, arbok_head, food)
 
         x_dist = nearest[0] - arbok_head[0]
         y_dist = nearest[1] - arbok_head[1]
