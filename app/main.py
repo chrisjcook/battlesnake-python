@@ -104,7 +104,7 @@ def initialize_board(data):
     ## Initialize snake heads
     for snake in data['snakes']:
         for coord in snake['coords']:
-            if snake['id'] is arbok_id:
+            if snake['id'] == arbok_id:
                 board[coord[0]][coord[1]] = 2
             else:
                 board[coord[0]][coord[1]] = 4
@@ -113,7 +113,7 @@ def profile_board(data):
     ## Set snake bodies
     for snake in data['snakes']:
         for coord in snake['coords']:
-            if snake['id'] is arbok_id:
+            if snake['id'] == arbok_id:
                 board[coord[0]][coord[1]] = 1
             else:
                 board[coord[0]][coord[1]] = 3
