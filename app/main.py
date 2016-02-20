@@ -7,8 +7,6 @@ def get_health(data):
             return snake.get('health')
     return 90
 
-    #return str([snake.get('health') for snake in data.get('snakes') if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975'][0])
-
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -34,7 +32,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': str(get_health(data))
+        'taunt': 'ARBOK!!!'
     }
 
 
