@@ -16,21 +16,35 @@ def check_around(data):
             valid.remove(c)
     return valid
 
+def nearest_food(data, arbok_head):
+    food = data['food']
+    nearest = food[0]
+    n_total = abs(nearest[0] - arbok_head[0]) + abs(nearest[1] - arbok_head[1])
+    for f in food:
+        x_dist = f[0] - arbok_head[0]
+        y_dist = f[1] - arbok_head[1]
+        total = abs(x_dist) + abs(y_dist)
+        if n_total > total:
+            # n_total is further
+            nearest = f
+            n_total = total
+    return nearest
+
 def find_food(data):
     arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
     snakes = data['snakes']
     for x in snakes:
         if x['id'] == arbok_id:
             arbok = x
-    food = data['food']
+
     valid = check_around(data)
     if food:
-        first_food = food[0]
-
         arbok_head = arbok['coords'][0]
 
-        x_dist = first_food[0] - arbok_head[0]
-        y_dist = first_food[1] - arbok_head[1]
+        nearest = nearest_food(data, arbok_head)
+
+        x_dist = nearest[0] - arbok_head[0]
+        y_dist = nearest[1] - arbok_head[1]
 
         if x_dist > 0:
             # if food is to right of arbok
