@@ -147,7 +147,7 @@ def profile_board(data):
 def print_board():
     global board
 
-    board_string = ''
+    board_string = '\n'
     for column in board:
         board_string += ''.join(str(cell) for cell in column) + '\n'
     return board_string
