@@ -11,7 +11,7 @@ def check_around(data):
     x = arbok_head[0]
     y = arbok_head[1]
     valid = [[x, y + 1], [x, y - 1], [x + 1, y], [x -1, y]]
-    for c in arround:
+    for c in valid:
         if c in filled_blocks:
             valid.remove(c)
     return valid
