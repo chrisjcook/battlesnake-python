@@ -10,7 +10,7 @@ def check_around(data):
 
     x = arbok_head[0]
     y = arbok_head[1]
-    valid = [[x, y + 1], [x, y - 1], [x + 1, y], [x -1, y]]
+    valid = [[x, y + 1], [x, y - 1], [x + 1, y], [x - 1, y]]
     direction = ['south', 'north', 'east', 'west']
     x = 1
     for c in valid:
@@ -31,19 +31,6 @@ def nearest_food(data, arbok_head, food):
             nearest = f
             n_total = total
     return nearest
-
-def valid_coord(data, arbok_head, valid):
-    for c in valid:
-        x_dist = c[0] - arbok_head[0]
-        y_dist = c[1] - arbok_head[1]
-        if x_dist > 0:
-            return 'east'
-        if x_dist < 0:
-            return 'west'
-        if y_dist > 0:
-            return 'south'
-        if y_dist < 0:
-            return 'north'
 
 def find_food(data):
     arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
@@ -68,15 +55,15 @@ def find_food(data):
                 # if food is below arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
-                    if 'south' not in valid:
-                        return random.choice(valid)
-                    else:
-                        return {'move': 'south', 'taunt': 'battlesnake-python!'}
-                else:
                     if 'east' not in valid:
                         return random.choice(valid)
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
+                else:
+                    if 'south' not in valid:
+                        return random.choice(valid)
+                    else:
+                        return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
                 # if food is above arbok
                 if abs(x_dist) > abs(y_dist):
