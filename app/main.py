@@ -10,7 +10,8 @@ def get_health(data):
 def get_number_of_snakes(data):
     number_of_snakes = 0
     for snake in data.get('snakes'):
-        number_of_snakes = number_of_snakes + 1
+        if snake.get('status') = 'alive':
+            number_of_snakes = number_of_snakes + 1
 
     return number_of_snakes
 
