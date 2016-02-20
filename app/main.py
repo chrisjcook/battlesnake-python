@@ -69,9 +69,6 @@ def move():
     else:
         result = base_game()
 
-    ## TEST
-    result['taunt'] = print_board()
-
     return result
 
 def base_game():
@@ -105,13 +102,13 @@ def end():
 
 def initialize_board(data):
     ## Initialize to zeros
-    clear_board(data)
     board_width = data['width']
-    board_height data['height']
+    board_height = data['height']
+    clear_board()
 
-def clear_board(data):
+def clear_board():
     ## Reset to zeros
-    board = [[0 for x in range(data['height'])] for x in range(data['width'])]
+    board = [[0 for x in range(board_height)] for x in range(board_width)]
 
 def profile_board(data):
     clear_board(data)
@@ -143,4 +140,10 @@ def print_board():
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
 if __name__ == '__main__':
+    ## TEST
+    board_width = 10;
+    board_height = 10;
+    clear_board()
+    print_board()
+
     bottle.run(application, host=os.getenv('IP', '0.0.0.0'), port=os.getenv('PORT', '8080'))
