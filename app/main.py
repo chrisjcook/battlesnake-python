@@ -1,6 +1,7 @@
 import bottle
 import os
 
+i = 0
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -23,6 +24,7 @@ def index():
 @bottle.post('/start')
 def start():
     data = bottle.request.json
+    print "START: " + data
 
     # TODO: Do things with data
 
@@ -34,6 +36,12 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
+    print "MOVE: " + data
+    if i ==0:
+        i+=1
+        return {'move': 'north', 'taunt': 'ARBOK!'}
+    else:
+        return {'move': 'south', 'taunt': 'ARBOK!'}
 
     # TODO: Do things with data
 
@@ -46,6 +54,7 @@ def move():
 @bottle.post('/end')
 def end():
     data = bottle.request.json
+    print "END: " + data
 
     # TODO: Do things with data
 
