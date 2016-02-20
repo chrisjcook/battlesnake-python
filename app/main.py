@@ -38,7 +38,9 @@ def move():
     data = bottle.request.json
 
     snakes = data.snakes
-    arbok = next((x for x in snakes if x.id == arbok_id), None)
+    for x in snakes:
+        if x.id == arbok_id:
+            arbok = x
     food = data.food
     first_food = food[0]
 
