@@ -16,13 +16,13 @@ def check_around(data):
     for c in valid:
         if c in filled_blocks:
             if x == 1:
-                direction.remomve('south')
+                direction.remove('south')
             elif x == 2:
-                direction.remomve('north')
+                direction.remove('north')
             elif x == 3:
-                direction.remomve('east')
+                direction.remove('east')
             else:
-                direction.remomve('west')
+                direction.remove('west')
         x = x + 1
     return direction
 
