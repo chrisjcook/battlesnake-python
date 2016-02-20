@@ -68,6 +68,9 @@ def move():
     else:
         result = base_game()
 
+    board_string = print_board()
+    result['taunt'] = board_string
+
     return result
 
 def base_game():
@@ -145,9 +148,9 @@ def print_board():
     global board
 
     board_string = ''
-
     for column in board:
         board_string += ''.join(str(cell) for cell in column) + '\n'
+    return board_string
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
