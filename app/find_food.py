@@ -32,7 +32,7 @@ def nearest_food(data, arbok_head, food):
 def valid_coord(data, arbok_head, valid):
     for c in valid:
         x_dist = c[0] - arbok_head[0]
-        y_dist = y[1] - arbok_head[1]
+        y_dist = c[1] - arbok_head[1]
         if x_dist > 0:
             return 'east'
         if x_dist < 0:
