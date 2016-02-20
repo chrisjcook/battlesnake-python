@@ -63,13 +63,22 @@ def move():
     return result
 
 def base_game():
-    pass
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
 
 def mid_game():
-    pass
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
 
 def end_game():
-    pass
+    return {
+        'move': 'north',
+        'taunt': 'ARBOK!'
+    }
 
 
 @bottle.post('/end')
