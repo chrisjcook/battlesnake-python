@@ -2,6 +2,9 @@ import bottle
 import os
 
 board = []
+board_width = 0
+board_height = 0
+
 arbok_id = "9fccbadb-30bc-4f6e-845f-057e1ea32975"
 
 def get_health(data):
@@ -99,15 +102,11 @@ def end():
 
 def initialize_board(data):
     ## Initialize to zeros
-    board = [[0 for x in range(data['height']) for x in range(data['width'])]
+    clear_board(data)
 
-    ## Initialize snake heads
-    for snake in data['snakes']:
-        for coord in snake['coords']:
-            if snake['id'] == arbok_id:
-                board[coord[0]][coord[1]] = 2
-            else:
-                board[coord[0]][coord[1]] = 4
+def clear_board(data):
+    ## Reset to zeros
+    board = [[0 for x in range(data['height']) for x in range(data['width'])]
 
 def profile_board(data):
     ## Set snake bodies
@@ -128,6 +127,9 @@ def profile_board(data):
     ## Set food
     for food in data['food']:
         board[food[0]][food[1]] = 5
+
+def print_board():
+    for x in range
 
 
 # Expose WSGI app (so gunicorn can find it)
