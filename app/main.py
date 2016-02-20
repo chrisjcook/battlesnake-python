@@ -1,6 +1,11 @@
 import bottle
 import os
 
+board = []
+board_width = 0
+board_height = 0
+arbok_id = "9fccbadb-30bc-4f6e-845f-057e1ea32975"
+
 def get_health(data):
     for snake in data.get('snakes'):
         if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975':
@@ -37,7 +42,8 @@ def index():
 def start():
     data = bottle.request.json
 
-    # TODO: Do things with data
+    ## Create board and initialize to zeros
+    initialize_board(data)
 
     return {
         'taunt': 'ARBOK!!!'
@@ -48,7 +54,8 @@ def start():
 def move():
     data = bottle.request.json
 
-    # TODO: Do things with data
+    ## Update board with new positions
+    profile_board(data)
 
     number_of_snakes = get_number_of_snakes(data)
 
@@ -60,6 +67,9 @@ def move():
         result = end_game()
     else:
         result = base_game()
+
+    board_string = print_board()
+    result['taunt'] = board_string
 
     return result
 
@@ -92,6 +102,55 @@ def end():
         'taunt': 'ARBOK!'
     }
 
+def initialize_board(data):
+    global board_width
+    global board_height
+
+    ## Initialize to zeros
+    board_width = data['width']
+    board_height = data['height']
+    clear_board()
+
+def clear_board():
+    global board
+
+    ## Reset to zeros
+    board = [[0 for x in range(board_height)] for x in range(board_width)]
+
+def profile_board(data):
+    global board
+    global arbok_id
+
+    ## Reset all spots to zero
+    clear_board()
+
+    ## Set snake bodies
+    for snake in data['snakes']:
+        for coord in snake['coords']:
+            if snake['id'] == arbok_id:
+                board[coord[0]][coord[1]] = 1
+            else:
+                board[coord[0]][coord[1]] = 3
+
+    ## Set snake heads
+    for snake in data['snakes']:
+        if snake['id'] == arbok_id:
+            board[snake['coords'][0][0]][snake['coords'][0][1]] = 2
+        else:
+            board[snake['coords'][0][0]][snake['coords'][0][1]] = 4
+
+    ## Set food
+    for food in data['food']:
+        board[food[0]][food[1]] = 5
+
+## Pretty terrible print function, but use for rudimentary testing
+def print_board():
+    global board
+
+    board_string = '\n'
+    for column in reversed(board):
+        board_string += ''.join(str(cell) for cell in column) + '\n'
+    return board_string
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
