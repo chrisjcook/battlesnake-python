@@ -2,7 +2,7 @@ import bottle
 import os
 
 def get_health(data):
-    return [snake.get('health') for snake in data.get('snakes') if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975'][0]
+    return str([snake.get('health') for snake in data.get('snakes') if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975'][0])
 
 
     for snake in data.get()
