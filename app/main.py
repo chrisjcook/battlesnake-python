@@ -55,7 +55,7 @@ def move():
     data = bottle.request.json
 
     ## Update board with new positions
-    # profile_board(data)
+    profile_board(data)
 
     number_of_snakes = get_number_of_snakes(data)
 
@@ -122,7 +122,7 @@ def profile_board(data):
     global arbok_id
 
     ## Reset all spots to zero
-    clear_board(data)
+    clear_board()
 
     ## Set snake bodies
     for snake in data['snakes']:
