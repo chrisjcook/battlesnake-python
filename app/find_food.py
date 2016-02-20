@@ -12,20 +12,45 @@ def check_around(data):
 
     x = arbok_head[0]
     y = arbok_head[1]
+
+    walls = []
+    if x + 1 > 17:
+        # wall to right
+        walls.append('east')
+    if x - 1 < 0:
+        # wall to left
+        walls.append('west')
+    if y + 1 > 17:
+        # wall to south
+        walls.append('south')
+    if y - 1 < 0:
+        # wall to north
+        walls.append('north')
+
     valid = [[x, y + 1], [x, y - 1], [x + 1, y], [x - 1, y]]
     direction = ['south', 'north', 'east', 'west']
-    x = 1
+    i = 1
     for c in valid:
         if c in filled_blocks:
-            if x == 1:
+            if i == 1:
                 direction.remove('south')
-            elif x == 2:
+                direction.remove([x, y + 1])
+            elif i == 2:
                 direction.remove('north')
-            elif x == 3:
+                direction.remove([x, y - 1])
+            elif i == 3:
                 direction.remove('east')
+                direction.remove([x + 1, y])
             else:
                 direction.remove('west')
-        x = x + 1
+                direction.remove([x - 1, y])
+        i = i + 1
+
+    # remove walls
+    for w in walls:
+        if w in direction:
+            direction.remove(w)
+
     return direction
 
 def nearest_food(data, arbok_head, food):
