@@ -70,7 +70,7 @@ def move():
         result = base_game()
 
     ## TEST
-    result['taunt'] = print_board(data)
+    result['taunt'] = print_board()
 
     return result
 
@@ -135,7 +135,7 @@ def profile_board(data):
     for food in data['food']:
         board[food[0]][food[1]] = 5
 
-def print_board(data):
+def print_board():
     for column in board:
         print column + "\n"
     print "\n\n"
