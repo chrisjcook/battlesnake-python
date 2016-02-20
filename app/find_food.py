@@ -34,16 +34,12 @@ def check_around(data):
         if c in filled_blocks:
             if i == 1:
                 direction.remove('south')
-                direction.remove([x, y + 1])
             elif i == 2:
                 direction.remove('north')
-                direction.remove([x, y - 1])
             elif i == 3:
                 direction.remove('east')
-                direction.remove([x + 1, y])
             else:
                 direction.remove('west')
-                direction.remove([x - 1, y])
         i = i + 1
 
     # remove walls
