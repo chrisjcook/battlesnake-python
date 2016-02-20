@@ -63,13 +63,13 @@ def move():
 
     return result
 
-def base_game():
+def base_game(data):
     return {
         'move': 'north',
         'taunt': 'ARBOK!'
     }
 
-def mid_game():
+def mid_game(data):
     return {
         'move': 'north',
         'taunt': 'ARBOK!'
