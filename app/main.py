@@ -39,7 +39,7 @@ def move():
 
     snakes = data['snakes']
     for x in snakes:
-        if x.['id'] == arbok_id:
+        if x['id'] == arbok_id:
             arbok = x
     food = data['food']
     first_food = food[0]
@@ -55,55 +55,29 @@ def move():
             # if food is below arbok
             if abs(x_dist) > abs(y_dist):
                 # further horizontally east
-                return {
-                    'move': 'east'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'east', 'taunt': 'battlesnake-python!'}
             else:
-                return {
-                    'move': 'south'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'south', 'taunt': 'battlesnake-python!'}
         else:
             if abs(x_dist) > abs(y_dist):
                 # further horizontally east
-                return {
-                    'move': 'east'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'east', 'taunt': 'battlesnake-python!'}
             else:
-                return {
-                    'move': 'north'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'north', 'taunt': 'battlesnake-python!'}
     else:
         if y_dist > 0:
             # if food is below arbok
             if abs(x_dist) > abs(y_dist):
                 # further horizontally east
-                return {
-                    'move': 'west'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'west', 'taunt': 'battlesnake-python!'}
             else:
-                return {
-                    'move': 'south'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'south', 'taunt': 'battlesnake-python!'}
         else:
             if abs(x_dist) > abs(y_dist):
                 # further horizontally east
-                return {
-                    'move': 'west'
-                    'taunt': 'battlesnake-python!'
-                }
+                return {'move': 'west', 'taunt': 'battlesnake-python!'}
             else:
-                return {
-                    'move': 'north'
-                    'taunt': 'battlesnake-python!'
-                }
-
-
+                return {'move': 'north', 'taunt': 'battlesnake-python!'}
 
 @bottle.post('/end')
 def end():
