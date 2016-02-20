@@ -2,6 +2,8 @@ import bottle
 import os
 import random
 
+arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
+
 @bottle.route('/static/<path:path>')
 def static(path):
     return bottle.static_file(path, root='static/')
@@ -35,13 +37,70 @@ def start():
 def move():
     data = bottle.request.json
 
-    # TODO: Do things with data
+    snakes = data.snakes
+    arbok = next((x for x in snakes if x.id == arbok_id), None)
+    food = data.food
+    first_food = food[0]
 
+    arbok_head = arbok.coords[0]
 
-    return {
-        'move': random.choice(['north', 'east', 'west', 'south']),
-        'taunt': 'battlesnake-python!'
-    }
+    x_dist = food[0] - arbok_head[0]
+    y_dist = food[1] - arbok_head[1]
+
+    if x_dist > 0:
+        # if food is to right of arbok
+        if y_dist > 0:
+            # if food is below arbok
+            if abs(x_dist) > abs(y_dist):
+                # further horizontally east
+                return {
+                    'move': 'east'
+                    'taunt': 'battlesnake-python!'
+                }
+            else:
+                return {
+                    'move': 'south'
+                    'taunt': 'battlesnake-python!'
+                }
+        else:
+            if abs(x_dist) > abs(y_dist):
+                # further horizontally east
+                return {
+                    'move': 'east'
+                    'taunt': 'battlesnake-python!'
+                }
+            else:
+                return {
+                    'move': 'north'
+                    'taunt': 'battlesnake-python!'
+                }
+    else:
+        if y_dist > 0:
+            # if food is below arbok
+            if abs(x_dist) > abs(y_dist):
+                # further horizontally east
+                return {
+                    'move': 'west'
+                    'taunt': 'battlesnake-python!'
+                }
+            else:
+                return {
+                    'move': 'south'
+                    'taunt': 'battlesnake-python!'
+                }
+        else:
+            if abs(x_dist) > abs(y_dist):
+                # further horizontally east
+                return {
+                    'move': 'west'
+                    'taunt': 'battlesnake-python!'
+                }
+            else:
+                return {
+                    'move': 'north'
+                    'taunt': 'battlesnake-python!'
+                }
+
 
 
 @bottle.post('/end')
