@@ -1,7 +1,6 @@
 import bottle
 import os
 
-i = 0
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -35,11 +34,14 @@ def start():
 @bottle.post('/move')
 def move():
     data = bottle.request.json
-    if i ==0:
-        i+=1
-        return {'move': 'north', 'taunt': 'ARBOK!'}
-    else:
-        return {'move': 'south', 'taunt': 'ARBOK!'}
+
+    return {'move': 'east', 'taunt': 'ARBOK!'}
+
+    #if i ==0:
+    #    i+=1
+    #    return {'move': 'north', 'taunt': 'ARBOK!'}
+    #else:
+    #    return {'move': 'south', 'taunt': 'ARBOK!'}
 
     # TODO: Do things with data
 
