@@ -148,7 +148,7 @@ def print_board():
     global board
 
     board_string = '\n'
-    for column in board:
+    for column in reversed(board):
         board_string += ''.join(str(cell) for cell in column) + '\n'
     return board_string
 
