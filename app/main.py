@@ -1,6 +1,9 @@
 import bottle
 import os
 
+def get_health(data):
+    s_health = data.get(snakes.id('9fccbadb-30bc-4f6e-845f-057e1ea32975')).get('health')
+    return s_health
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -27,7 +30,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': 'ARBOK!'
+        'taunt': str(get_health(data))
     }
 
 
