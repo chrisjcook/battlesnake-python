@@ -53,13 +53,13 @@ def move():
     number_of_snakes = get_number_of_snakes(data)
 
     if number_of_snakes >= 4:
-        result = base_game()
+        result = base_game(data)
     elif number_of_snakes is 3:
-        result = mid_game()
+        result = mid_game(data)
     elif number_of_snakes is 2:
-        result = end_game()
+        result = end_game(data)
     else:
-        result = base_game()
+        result = base_game(data)
 
     return result
 
@@ -75,11 +75,50 @@ def mid_game():
         'taunt': 'ARBOK!'
     }
 
-def end_game():
+def end_game(data):
+    if not target_enemy(data):
+        #go for food
+        pass
+    else:
+        if get_health(data) < 35:
+            #go find food
+        else:
+        #ATTACK!!!
+        my_head, my_body, target_head, target_body = determine_position(data)
+        
+        #globals
+
+
     return {
         'move': 'north',
         'taunt': 'ARBOK!'
     }
+
+def determine_position(data):
+    my_head = []
+    my_body = []
+    target_head = []
+    target_body = []
+    for snake in data.get('snakes'):
+        if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975':
+            my_head = snake.get('coords')[0]
+            my_head = snake.get('coords')[1:]
+        else:
+            target_head = snake.get('coords')[0]
+            target_body = snake.get('coords')[1:]
+    return my_head, my_body, target_head, target_body
+
+
+#For when two snakes left, for end_game, determines if your bigger than enemy snake
+def target_enemy(data):
+    my_size = 0
+    target_size = 0
+    for snake in data.get('snakes'):
+        if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975':
+            my_size = len(snake.get('coords'))
+        else:
+            target_size = len(snake.get('coords'))
+    return my_size > target_size
 
 
 @bottle.post('/end')
