@@ -43,42 +43,45 @@ def move():
         if x['id'] == arbok_id:
             arbok = x
     food = data['food']
-    first_food = food[0]
+    if food:
+        first_food = food[0]
 
-    arbok_head = arbok['coords'][0]
+        arbok_head = arbok['coords'][0]
 
-    x_dist = food[0] - arbok_head[0]
-    y_dist = food[1] - arbok_head[1]
+        x_dist = food[0] - arbok_head[0]
+        y_dist = food[1] - arbok_head[1]
 
-    if x_dist > 0:
-        # if food is to right of arbok
-        if y_dist > 0:
-            # if food is below arbok
-            if abs(x_dist) > abs(y_dist):
-                # further horizontally east
-                return {'move': 'east', 'taunt': 'battlesnake-python!'}
+        if x_dist > 0:
+            # if food is to right of arbok
+            if y_dist > 0:
+                # if food is below arbok
+                if abs(x_dist) > abs(y_dist):
+                    # further horizontally east
+                    return {'move': 'east', 'taunt': 'battlesnake-python!'}
+                else:
+                    return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
-                return {'move': 'south', 'taunt': 'battlesnake-python!'}
+                if abs(x_dist) > abs(y_dist):
+                    # further horizontally east
+                    return {'move': 'east', 'taunt': 'battlesnake-python!'}
+                else:
+                    return {'move': 'north', 'taunt': 'battlesnake-python!'}
         else:
-            if abs(x_dist) > abs(y_dist):
-                # further horizontally east
-                return {'move': 'east', 'taunt': 'battlesnake-python!'}
+            if y_dist > 0:
+                # if food is below arbok
+                if abs(x_dist) > abs(y_dist):
+                    # further horizontally east
+                    return {'move': 'west', 'taunt': 'battlesnake-python!'}
+                else:
+                    return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
-                return {'move': 'north', 'taunt': 'battlesnake-python!'}
+                if abs(x_dist) > abs(y_dist):
+                    # further horizontally east
+                    return {'move': 'west', 'taunt': 'battlesnake-python!'}
+                else:
+                    return {'move': 'north', 'taunt': 'battlesnake-python!'}
     else:
-        if y_dist > 0:
-            # if food is below arbok
-            if abs(x_dist) > abs(y_dist):
-                # further horizontally east
-                return {'move': 'west', 'taunt': 'battlesnake-python!'}
-            else:
-                return {'move': 'south', 'taunt': 'battlesnake-python!'}
-        else:
-            if abs(x_dist) > abs(y_dist):
-                # further horizontally east
-                return {'move': 'west', 'taunt': 'battlesnake-python!'}
-            else:
-                return {'move': 'north', 'taunt': 'battlesnake-python!'}
+        return {'move': 'north', 'taunt': 'battlesnake-python!'}
 
 @bottle.post('/end')
 def end():
