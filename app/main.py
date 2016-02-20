@@ -55,7 +55,7 @@ def move():
     data = bottle.request.json
 
     ## Update board with new positions
-    profile_board(data)
+    # profile_board(data)
 
     number_of_snakes = get_number_of_snakes(data)
 
