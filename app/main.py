@@ -37,7 +37,7 @@ def start():
 def move():
     data = bottle.request.json
 
-    snakes = data.snakes
+    snakes = data[snakes]
     for x in snakes:
         if x.id == arbok_id:
             arbok = x
