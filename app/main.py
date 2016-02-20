@@ -103,6 +103,8 @@ def end():
 def initialize_board(data):
     ## Initialize to zeros
     clear_board(data)
+    board_width = data['width']
+    board_height data['height']
 
 def clear_board(data):
     ## Reset to zeros
@@ -130,9 +132,10 @@ def profile_board(data):
     for food in data['food']:
         board[food[0]][food[1]] = 5
 
-def print_board():
-    for x in range
-
+def print_board(data):
+    for column in board:
+        print column
+    print "\n\n"
 
 # Expose WSGI app (so gunicorn can find it)
 application = bottle.default_app()
