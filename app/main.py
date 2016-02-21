@@ -71,13 +71,13 @@ def move():
 def base_game(data):
     return {
         'move': 'north',
-        'taunt': 'ARBOK!'
+        'taunt': 'base!'
     }
 
 def mid_game(data):
     return {
         'move': 'north',
-        'taunt': 'ARBOK!'
+        'taunt': 'mid!'
     }
 
 def end_game(data):
