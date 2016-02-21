@@ -12,11 +12,14 @@ possible_directions = {
 
 def dfs(board, our_head, food):
     # distances = []
-    smallest = len(board) + len(board[0])
+    smallest = 100
     best_move = ''
+    print food
     for coord in food:
         head = our_head[:]
         distance, move = __do_search(board, head, coord)
+        print "distance" +distance
+        print "move" +move
         if distance < smallest:
             smallest = distance
             best_move = move

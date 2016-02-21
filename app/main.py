@@ -91,10 +91,11 @@ def start():
 def move():
     data = bottle.request.json
 
-    ## Update board with new positions
+    # Update board with new positions
     profile_board(data)
     food = data['food']
 
+    # move = dfs(sample_board_10, [0,2], [[1, 2], [9, 3]])
     move = dfs(board, arbok_head, food)
 
     number_of_snakes = get_number_of_snakes(data)
@@ -110,6 +111,7 @@ def move():
 
     board_string = print_board()
     result['taunt'] = board_string
+    # result = {}
     result['move'] = move
 
     return result
@@ -166,6 +168,7 @@ def profile_board(data):
     ## Reset all spots to zero
     clear_board()
 
+    # print data
     ## Set snake bodies
     for snake in data['snakes']:
         for coord in snake['coords']:
