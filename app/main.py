@@ -248,6 +248,8 @@ def initialize_board(data):
 
 def clear_board():
     global board
+    global board_height
+    global board_width
 
     ## Reset to zeros
     board = [[0 for x in range(board_height)] for x in range(board_width)]
