@@ -152,10 +152,12 @@ def end_game(data):
     }
 
 def get_quadrant(my_head):
-    top_left = math.sqrt((my_head[0]-2)**2 + (my_head[1] - 2)**2)
-    top_right = math.sqrt((my_head[0]-board_width-2)**2 + (my_head[1] - 2)**2)
-    bottom_left = math.sqrt((my_head[0]-2)**2 + (my_head[1] - board_height-2)**2)
-    bottom_right = math.sqrt((my_head[0] - board_width-2)**2 + (my_head[1] - board_height-2)**2)
+    pow(my_head[0]-2, 2)
+
+    top_left = math.sqrt(pow((my_head[0]-2),2) + pow(my_head[1] - 2, 2))
+    top_right = math.sqrt(pow((my_head[0]-board_width-2),2) + pow(my_head[1] - 2,2))
+    bottom_left = math.sqrt(pow((my_head[0]-2),2) + pow(my_head[1] - board_height-2,2))
+    bottom_right = math.sqrt(pow(my_head[0] - board_width-2,2) + pow(my_head[1] - board_height-2,2))
     smallest = min(top_left, top_right, bottom_left, bottom_right)
     if smallest == top_left:
         return 1, [2, 2]
