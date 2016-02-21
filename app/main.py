@@ -45,7 +45,7 @@ def move():
         if arbok_head[1] < 8:
             return {'move': 'north', 'taunt': 'battlesnake-python'}
         else:
-            return {'move': 'north', 'taunt': 'battlesnake-python'}
+            return {'move': 'south', 'taunt': 'battlesnake-python'}
 
     return find_food(data)
 
