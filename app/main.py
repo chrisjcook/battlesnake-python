@@ -95,26 +95,35 @@ def end_game(data):
             #ATTACK!!!
             my_head, my_body, target_head, target_body = determine_position(data)
             grid_list = get_grid_line()
-            quadrant_coord = get_quadrant(my_head) #quadrant_coord your in
+            quadrant, quadrant_coord = get_quadrant(my_head) #quadrant_coord your in
             if my_head in grid_list:
                 index = grid_list.index(my_head)
                 if index == len(grid_list) -1:
                     next_coord == grid_list[0]
                 else:
                     next_coord = grid_list[index + 1]
-                    x_val = next_coord[0] - my_head[0]
-                    y_val = next_coord[1] - my_head[1]
-                    if x_val != 0:
-                        #moving next dir
-                        if x_val > 0:
-                            return {'move': 'east'}
+                    if board[next_coord[0]][next_coord[1]] == 0:
+                        x_val = next_coord[0] - my_head[0]
+                        y_val = next_coord[1] - my_head[1]
+                        if x_val != 0:
+                            #moving next dir
+                            if x_val > 0:
+                                return {'move': 'east'}
+                            else:
+                                return {'move': 'west'}
                         else:
-                            return {'move': 'west'}
-                    else:
-                        if y_val > 0:
-                            return {'move': 'south'}
-                        else:
-                            return {'move': 'north'}
+                            if y_val > 0:
+                                return {'move': 'south'}
+                            else:
+                                return {'move': 'north'}
+                    elif board[my_head[0]+1][my_head[1]] == 0:
+                        return {'move': 'east'}
+                    elif board[my_head[0]][my_head[1+1]] == 0:
+                        return {'move': 'south'}
+                    elif board[my_head[0]-1][my_head[1]] == 0:
+                        return {'move': 'west'}
+                    elif board[my_head[0]][my_head[1-1]] == 0:
+                        return {'move': 'north'}
             else:
                 x_val = quadrant_coord[0] - my_head[0]
                 y_val = quadrant_coord[1] - my_head[1]
@@ -143,13 +152,13 @@ def get_quadrant(my_head):
     bottom_right = math.sqrt((my_head[0] - board_width-2)**2 + (my_head[1] - board_height-2)**2)
     smallest = min(top_left, top_right, bottom_left, bottom_right)
     if smallest == top_left:
-        return [2, 2]
+        return 1, [2, 2]
     elif smallest == top_right:
-        return [board_width-2, 2]
+        return 4, [board_width-2, 2]
     elif smallest == bottom_left:
-        return [2, board_height-2]
+        return 2, [2, board_height-2]
     elif smallest == bottom_right:
-        return [board_width-2, board_height-2]
+        return 3, [board_width-2, board_height-2]
 
 
 
