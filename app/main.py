@@ -174,7 +174,9 @@ def profile_board(data):
     for snake in data['snakes']:
         if snake['id'] == arbok_id:
             board[snake['coords'][0][0]][snake['coords'][0][1]] = 2
-            arbok_head = snake['coords']
+
+            ## Set our head coords
+            arbok_head = snake['coords'][0]
         else:
             board[snake['coords'][0][0]][snake['coords'][0][1]] = 4
 
