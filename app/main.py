@@ -1,6 +1,6 @@
 import bottle
 import os
-import random
+
 from find_food import find_food
 
 @bottle.route('/static/<path:path>')
@@ -16,7 +16,7 @@ def index():
     )
 
     return {
-        'color': '#00ff00',
+        'color': '#746876',
         'head': head_url
     }
 
