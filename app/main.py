@@ -60,7 +60,7 @@ def move():
     clear_board()
 
     ## Update board with new positions
-    profile_board(data)
+    return profile_board(data)
 
     number_of_snakes = get_number_of_snakes(data)
 
@@ -111,7 +111,7 @@ def end_game(data):
                 next_coord == grid_list[0]
             else:
                 next_coord = grid_list[index + 1]
-                if board[next_coord[0]][next_coord[1]] == 0:
+                if board[next_coord[0]][next_coord[1]] == 0 or board[next_coord[0]][next_coord[1]] == 5:
                     x_val = next_coord[0] - my_head[0]
                     y_val = next_coord[1] - my_head[1]
                     if x_val != 0:
@@ -134,7 +134,7 @@ def end_game(data):
                 elif board[my_head[0]][my_head[1-1]] == 0:
                     return {'move': 'north', 'taunt': 'in here!'}
         else:
-            if board[quadrant_coord[0]][quadrant_coord[1]] == 0:
+            if board[quadrant_coord[0]][quadrant_coord[1]] == 0 or board[quadrant_coord[0]][quadrant_coord[1]] == 5:
                 x_val = quadrant_coord[0] - my_head[0]
                 y_val = quadrant_coord[1] - my_head[1]
                 x_min_dist = abs(x_val)
@@ -265,6 +265,7 @@ def profile_board(data):
     for snake in data['snakes']:
         for coord in snake['coords']:
             if snake['id'] == arbok_id:
+                return {'move': 'west', 'taunt': str(coord[0])}
                 board[coord[0]][coord[1]] = 1
             else:
                 board[coord[0]][coord[1]] = 3
