@@ -108,22 +108,22 @@ def end_game(data):
                         if x_val != 0:
                             #moving next dir
                             if x_val > 0:
-                                return {'move': 'east'}
+                                return {'move': 'east', 'taunt': 'in here!'}
                             else:
-                                return {'move': 'west'}
+                                return {'move': 'west', 'taunt': 'in here!'}
                         else:
                             if y_val > 0:
-                                return {'move': 'south'}
+                                return {'move': 'south', 'taunt': 'in here!'}
                             else:
-                                return {'move': 'north'}
+                                return {'move': 'north', 'taunt': 'in here!'}
                     elif board[my_head[0]+1][my_head[1]] == 0:
-                        return {'move': 'east'}
+                        return {'move': 'east', 'taunt': 'in here!'}
                     elif board[my_head[0]][my_head[1+1]] == 0:
-                        return {'move': 'south'}
+                        return {'move': 'south', 'taunt': 'in here!'}
                     elif board[my_head[0]-1][my_head[1]] == 0:
-                        return {'move': 'west'}
+                        return {'move': 'west', 'taunt': 'in here!'}
                     elif board[my_head[0]][my_head[1-1]] == 0:
-                        return {'move': 'north'}
+                        return {'move': 'north', 'taunt': 'in here!'}
             else:
                 if board[quadrant_coord[0]][quadrant_coord[1]] == 0:
                     x_val = quadrant_coord[0] - my_head[0]
@@ -133,25 +133,25 @@ def end_game(data):
                     if x_min_dist < y_min_dist:
                         if x_val < 0:
                             #move right
-                            return {'move': 'west'}
+                            return {'move': 'west', 'taunt': 'else!'}
                         else:
-                            return {'move': 'east'}
+                            return {'move': 'east', 'taunt': 'else!'}
                     else:
                         if y_val < 0:
-                            return {'move': 'up'}
+                            return {'move': 'north', 'taunt': 'else!'}
                         else:
-                            return {'move': 'down'}
+                            return {'move': 'south', 'taunt': 'else!'}
                 elif board[my_head[0]+1][my_head[1]] == 0:
-                    return {'move': 'east'}
+                    return {'move': 'east', 'taunt': 'else!'}
                 elif board[my_head[0]][my_head[1+1]] == 0:
-                    return {'move': 'south'}
+                    return {'move': 'south', 'taunt': 'else!'}
                 elif board[my_head[0]-1][my_head[1]] == 0:
-                    return {'move': 'west'}
+                    return {'move': 'west', 'taunt': 'else!'}
                 elif board[my_head[0]][my_head[1-1]] == 0:
-                    return {'move': 'north'}
+                    return {'move': 'north', 'taunt': 'else!'}
     return {
         'move': 'north',
-        'taunt': 'ARBOK!'
+        'taunt': 'Shouldnt be here'
     }
 
 def get_quadrant(my_head):
