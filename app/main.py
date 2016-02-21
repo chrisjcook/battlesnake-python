@@ -66,9 +66,7 @@ def move():
 
     if number_of_snakes >= 4:
         result = base_game(data)
-    elif number_of_snakes is 3:
-        result = mid_game(data)
-    elif number_of_snakes is 2:
+    elif number_of_snakes <= 3:
         result = end_game(data)
     else:
         result = base_game(data)
@@ -82,12 +80,6 @@ def base_game(data):
     return {
         'move': 'north',
         'taunt': 'base!'
-    }
-
-def mid_game(data):
-    return {
-        'move': 'north',
-        'taunt': 'mid!'
     }
 
 def end_game(data):
@@ -265,7 +257,7 @@ def profile_board(data):
     for snake in data['snakes']:
         for coord in snake['coords']:
             if snake['id'] == arbok_id:
-                return {'move': 'west', 'taunt': str(coord[0])}
+                return {'move': 'west', 'taunt': str(coord[1])}
                 board[coord[0]][coord[1]] = 1
             else:
                 board[coord[0]][coord[1]] = 3
