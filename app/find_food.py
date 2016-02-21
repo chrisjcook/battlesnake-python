@@ -86,12 +86,12 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
                     if 'east' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'south' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
@@ -99,26 +99,27 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
                     if 'east' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'north' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
         else:
+            # food is to left of arbok
             if y_dist > 0:
                 # if food is below arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally west
                     if 'west' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'west', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'south' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
@@ -126,12 +127,12 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally west
                     if 'west' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'west', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'north' not in valid:
-                        return valid[0]
+                        return {'move': valid[0], 'taunt': 'battlesnake-python'}
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
     else:
