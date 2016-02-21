@@ -84,71 +84,68 @@ def end_game(data):
     global board
     global board_width
     global board_height
-    if not target_enemy(data):
-        #go for food
+
+    if get_health(data) < 35:
         pass
+        #go find food
     else:
-        if get_health(data) < 35:
-            pass
-            #go find food
-        else:
-            #ATTACK!!!
-            my_head, my_body, target_head, target_body = determine_position(data)
-            grid_list = get_grid_line()
-            quadrant, quadrant_coord = get_quadrant(my_head) #quadrant_coord your in
-            if my_head in grid_list:
-                index = grid_list.index(my_head)
-                if index == len(grid_list) -1:
-                    next_coord == grid_list[0]
-                else:
-                    next_coord = grid_list[index + 1]
-                    if board[next_coord[0]][next_coord[1]] == 0:
-                        x_val = next_coord[0] - my_head[0]
-                        y_val = next_coord[1] - my_head[1]
-                        if x_val != 0:
-                            #moving next dir
-                            if x_val > 0:
-                                return {'move': 'east', 'taunt': 'in here!'}
-                            else:
-                                return {'move': 'west', 'taunt': 'in here!'}
-                        else:
-                            if y_val > 0:
-                                return {'move': 'south', 'taunt': 'in here!'}
-                            else:
-                                return {'move': 'north', 'taunt': 'in here!'}
-                    elif board[my_head[0]+1][my_head[1]] == 0:
-                        return {'move': 'east', 'taunt': 'in here!'}
-                    elif board[my_head[0]][my_head[1+1]] == 0:
-                        return {'move': 'south', 'taunt': 'in here!'}
-                    elif board[my_head[0]-1][my_head[1]] == 0:
-                        return {'move': 'west', 'taunt': 'in here!'}
-                    elif board[my_head[0]][my_head[1-1]] == 0:
-                        return {'move': 'north', 'taunt': 'in here!'}
+        #ATTACK!!!
+        my_head, my_body, target_head, target_body = determine_position(data)
+        grid_list = get_grid_line()
+        quadrant, quadrant_coord = get_quadrant(my_head) #quadrant_coord your in
+        if my_head in grid_list:
+            index = grid_list.index(my_head)
+            if index == len(grid_list) -1:
+                next_coord == grid_list[0]
             else:
-                if board[quadrant_coord[0]][quadrant_coord[1]] == 0:
-                    x_val = quadrant_coord[0] - my_head[0]
-                    y_val = quadrant_coord[1] - my_head[1]
-                    x_min_dist = abs(x_val)
-                    y_min_dist = abs(y_val)
-                    if x_min_dist < y_min_dist:
-                        if x_val < 0:
-                            #move right
-                            return {'move': 'west', 'taunt': 'else!'}
+                next_coord = grid_list[index + 1]
+                if board[next_coord[0]][next_coord[1]] == 0:
+                    x_val = next_coord[0] - my_head[0]
+                    y_val = next_coord[1] - my_head[1]
+                    if x_val != 0:
+                        #moving next dir
+                        if x_val > 0:
+                            return {'move': 'east', 'taunt': 'in here!'}
                         else:
-                            return {'move': 'east', 'taunt': 'else!'}
+                            return {'move': 'west', 'taunt': 'in here!'}
                     else:
-                        if y_val < 0:
-                            return {'move': 'north', 'taunt': 'else!'}
+                        if y_val > 0:
+                            return {'move': 'south', 'taunt': 'in here!'}
                         else:
-                            return {'move': 'south', 'taunt': 'else!'}
+                            return {'move': 'north', 'taunt': 'in here!'}
                 elif board[my_head[0]+1][my_head[1]] == 0:
-                    return {'move': 'east', 'taunt': 'else!'}
+                    return {'move': 'east', 'taunt': 'in here!'}
                 elif board[my_head[0]][my_head[1+1]] == 0:
-                    return {'move': 'south', 'taunt': 'else!'}
+                    return {'move': 'south', 'taunt': 'in here!'}
                 elif board[my_head[0]-1][my_head[1]] == 0:
-                    return {'move': 'west', 'taunt': 'else!'}
+                    return {'move': 'west', 'taunt': 'in here!'}
                 elif board[my_head[0]][my_head[1-1]] == 0:
-                    return {'move': 'north', 'taunt': 'else!'}
+                    return {'move': 'north', 'taunt': 'in here!'}
+        else:
+            if board[quadrant_coord[0]][quadrant_coord[1]] == 0:
+                x_val = quadrant_coord[0] - my_head[0]
+                y_val = quadrant_coord[1] - my_head[1]
+                x_min_dist = abs(x_val)
+                y_min_dist = abs(y_val)
+                if x_min_dist < y_min_dist:
+                    if x_val < 0:
+                        #move right
+                        return {'move': 'west', 'taunt': 'else!'}
+                    else:
+                        return {'move': 'east', 'taunt': 'else!'}
+                else:
+                    if y_val < 0:
+                        return {'move': 'north', 'taunt': 'else!'}
+                    else:
+                        return {'move': 'south', 'taunt': 'else!'}
+            elif board[my_head[0]+1][my_head[1]] == 0:
+                return {'move': 'east', 'taunt': 'else!'}
+            elif board[my_head[0]][my_head[1+1]] == 0:
+                return {'move': 'south', 'taunt': 'else!'}
+            elif board[my_head[0]-1][my_head[1]] == 0:
+                return {'move': 'west', 'taunt': 'else!'}
+            elif board[my_head[0]][my_head[1-1]] == 0:
+                return {'move': 'north', 'taunt': 'else!'}
     return {
         'move': 'north',
         'taunt': 'Shouldnt be here'
