@@ -37,7 +37,15 @@ def move():
     data = bottle.request.json
 
     if data['turn'] == 0:
-        return {'move': 'south', 'taunt': 'battlesnake-python'}
+        snakes = data['snakes']
+        for x in snakes:
+            if x['id'] == arbok_id:
+                arbok = x
+        arbok_head = arbok['coords'][0]
+        if arbok_head[1] < 8:
+            return {'move': 'north', 'taunt': 'battlesnake-python'}
+        else:
+            return {'move': 'north', 'taunt': 'battlesnake-python'}
 
     return find_food(data)
 
