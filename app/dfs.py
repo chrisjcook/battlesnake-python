@@ -46,9 +46,9 @@ def __do_search(board, our_head, item):
         __increase_weight(potential_moves, 'east', 2)
     elif x_delta > 0: # go left/west
         __increase_weight(potential_moves, 'west', 2)
-    else:
-        __increase_weight(potential_moves, 'west', 1.5)
-        __increase_weight(potential_moves, 'east', 1.5)
+    # else:
+    #     __increase_weight(potential_moves, 'west', 1.5)
+    #     __increase_weight(potential_moves, 'east', 1.5)
 
     y_delta = our_head[1] - item[1]
 
@@ -56,9 +56,9 @@ def __do_search(board, our_head, item):
         __increase_weight(potential_moves, 'south', 2)
     elif x_delta > 0: # go up/north
         __increase_weight(potential_moves, 'north', 2)
-    else:
-        __increase_weight(potential_moves, 'north', 1.5)
-        __increase_weight(potential_moves, 'south', 1.5)
+    # else:
+    #     __increase_weight(potential_moves, 'north', 1.5)
+    #     __increase_weight(potential_moves, 'south', 1.5)
 
     distance = x_delta + y_delta
 
