@@ -46,6 +46,7 @@ def check_around(data):
     for w in walls:
         if w in direction:
             direction.remove(w)
+            print "Wall to " + str(w)
 
     return direction
 
@@ -75,8 +76,6 @@ def find_food(data):
         arbok_head = arbok['coords'][0]
 
         nearest = nearest_food(data, arbok_head, food)
-        if nearest[0] == 8 and nearest[1] == 8:
-            return random.choice(valid)
 
         x_dist = nearest[0] - arbok_head[0]
         y_dist = nearest[1] - arbok_head[1]
