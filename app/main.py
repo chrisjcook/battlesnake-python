@@ -257,9 +257,10 @@ def profile_board(data):
     for snake in data['snakes']:
         for coord in snake['coords']:
             if snake['id'] == arbok_id:
-                return {'move': 'west', 'taunt': str(coord[1])}
+                return {'move': 'west', 'taunt': str(coord[0] + coord[1])}
                 board[coord[0]][coord[1]] = 1
             else:
+                return {'move': 'north', 'taunt': str(coord[0] + coord[1])}
                 board[coord[0]][coord[1]] = 3
 
     ## Set snake heads
