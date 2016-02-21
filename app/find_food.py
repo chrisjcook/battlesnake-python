@@ -1,4 +1,3 @@
-import random
 
 def check_around(data):
     arbok_id = '9fccbadb-30bc-4f6e-845f-057e1ea32975'
@@ -87,12 +86,12 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
                     if 'east' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'south' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
@@ -100,12 +99,12 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
                     if 'east' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'east', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'north' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
         else:
@@ -114,12 +113,12 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally west
                     if 'west' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'west', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'south' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'south', 'taunt': 'battlesnake-python!'}
             else:
@@ -127,12 +126,12 @@ def find_food(data):
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally west
                     if 'west' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'west', 'taunt': 'battlesnake-python!'}
                 else:
                     if 'north' not in valid:
-                        return random.choice(valid)
+                        return valid[0]
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
     else:
