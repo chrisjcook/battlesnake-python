@@ -136,4 +136,4 @@ def find_food(data):
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
     else:
-        return {'move': 'north', 'taunt': 'battlesnake-python!'}
+        return {'move': valid[0], 'taunt': 'battlesnake-python!'}
