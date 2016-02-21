@@ -6,9 +6,6 @@ board = []
 board_width = 17
 board_height = 17
 
-board = []
-board_width = 0
-board_height = 0
 arbok_id = "9fccbadb-30bc-4f6e-845f-057e1ea32975"
 
 def get_health(data):
@@ -94,6 +91,8 @@ def end_game(data):
     global board
     global board_width
     global board_height
+
+    next_coord = []
 
     if get_health(data) < 35:
         pass
