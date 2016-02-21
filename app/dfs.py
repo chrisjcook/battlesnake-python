@@ -81,9 +81,9 @@ def __detect_board_limits(board, our_head, moves):
     y = our_head[1]
 
     if y - 1 < 0:
-        __increase_weight(moves, 'south', 0)
-    if y + 1 >= 17:
         __increase_weight(moves, 'north', 0)
+    if y + 1 >= 17:
+        __increase_weight(moves, 'south', 0)
     if x + 1 >= 17:
         __increase_weight(moves, 'east', 0)
     if x - 1 < 0:
