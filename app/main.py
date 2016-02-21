@@ -3,8 +3,8 @@ import os
 import math
 
 board = []
-board_width = 0
-board_height = 0
+board_width = 17
+board_height = 17
 
 def get_health(data):
     for snake in data.get('snakes'):
