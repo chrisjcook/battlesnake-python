@@ -94,6 +94,7 @@ def move():
     # Update board with new positions
     profile_board(data)
     food = data['food']
+    print data 
 
     # move = dfs(sample_board_10, [0,2], [[1, 2], [9, 3]])
     move = dfs(board, arbok_head, food)
