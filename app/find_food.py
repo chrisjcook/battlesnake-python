@@ -14,13 +14,13 @@ def check_around(data):
     y = arbok_head[1]
 
     walls = []
-    if x + 1 > 17:
+    if x + 1 > 16:
         # wall to right
         walls.append('east')
     if x - 1 < 0:
         # wall to left
         walls.append('west')
-    if y + 1 > 17:
+    if y + 1 > 16:
         # wall to south
         walls.append('south')
     if y - 1 < 0:
