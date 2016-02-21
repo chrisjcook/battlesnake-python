@@ -98,15 +98,15 @@ def find_food(data):
                 # if food is above arbok
                 if abs(x_dist) > abs(y_dist):
                     # further horizontally east
-                    if 'east' not in valid:
-                        return random.choice(valid)
-                    else:
-                        return {'move': 'east', 'taunt': 'battlesnake-python!'}
-                else:
                     if 'north' not in valid:
                         return random.choice(valid)
                     else:
                         return {'move': 'north', 'taunt': 'battlesnake-python!'}
+                else:
+                    if 'east' not in valid:
+                        return random.choice(valid)
+                    else:
+                        return {'move': 'east', 'taunt': 'battlesnake-python!'}
         else:
             if y_dist > 0:
                 # if food is below arbok
