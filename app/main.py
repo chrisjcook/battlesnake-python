@@ -110,6 +110,7 @@ def move():
 
     board_string = print_board()
     result['taunt'] = board_string
+    result['move'] = move
 
     return result
 

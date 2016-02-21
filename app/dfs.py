@@ -20,7 +20,7 @@ def dfs(board, our_head, food):
         if distance < smallest:
             smallest = distance
             best_move = move
-            print distance
+            # print distance
 
     return best_move
 
