@@ -36,6 +36,9 @@ def start():
 def move():
     data = bottle.request.json
 
+    if data['turn'] == 0:
+        return {'move': 'south', 'taunt': 'battlesnake-python'}
+
     return find_food(data)
 
 @bottle.post('/end')

@@ -69,7 +69,6 @@ def find_food(data):
             arbok = x
 
     valid = check_around(data)
-    print 'VALID DIRECTIONS: ' + str(valid)
     food = data['food']
     if food:
         arbok_head = arbok['coords'][0]
