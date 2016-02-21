@@ -178,13 +178,16 @@ def get_grid_line():
     y_values = range(2, board_height-2)
     x_values = range(3, board_width-3)
     grid_1 = []
+    grid_2 = []
+    grid_3 = []
+    grid_4 = []
     for y in y_values:
         #west and east lines of board
         grid_1.append([2, y])
-        grid_2.appead([board_width-2, y])
+        grid_2.append([board_width-2, y])
     for x in x_values:
-        grid_3.appead(x, 2)
-        grid_4.appead(x, board_height-2)
+        grid_3.append(x, 2)
+        grid_4.append(x, board_height-2)
     grid_1.extend(grid_4+grid_2+grid_3)
     return grid_1
 
