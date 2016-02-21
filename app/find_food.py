@@ -111,7 +111,7 @@ def find_food(data):
             if y_dist > 0:
                 # if food is below arbok
                 if abs(x_dist) > abs(y_dist):
-                    # further horizontally west
+                    # further horizontally east
                     if 'south' not in valid:
                         return random.choice(valid)
                     else:
@@ -124,7 +124,7 @@ def find_food(data):
             else:
                 # if food is above arbok
                 if abs(x_dist) > abs(y_dist):
-                    # further horizontally west
+                    # further horizontally east
                     if 'north' not in valid:
                         return random.choice(valid)
                     else:
