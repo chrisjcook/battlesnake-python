@@ -199,7 +199,7 @@ def determine_position(data):
     for snake in data.get('snakes'):
         if snake.get('id') == '9fccbadb-30bc-4f6e-845f-057e1ea32975':
             my_head = snake.get('coords')[0]
-            my_head = snake.get('coords')[1:]
+            my_body = snake.get('coords')[1:]
         else:
             target_head = snake.get('coords')[0]
             target_body = snake.get('coords')[1:]
