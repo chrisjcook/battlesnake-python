@@ -95,7 +95,7 @@ def move():
     profile_board(data)
     food = data['food']
 
-    move = dfs(board, arbok_head,food)
+    move = dfs(board, arbok_head, food)
 
     number_of_snakes = get_number_of_snakes(data)
 

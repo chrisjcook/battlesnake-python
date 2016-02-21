@@ -12,21 +12,20 @@ possible_directions = {
 
 def dfs(board, our_head, food):
     # distances = []
-    smallest = len(board)
+    smallest = len(board) + len(board[0])
     best_move = ''
     for coord in food:
         head = our_head[:]
         distance, move = __do_search(board, head, coord)
-        if distance < board:
+        if distance < smallest:
             smallest = distance
             best_move = move
             print distance
-        # distances.append(distance)
+
     return best_move
 
 # [2,8], [0,7]
 def __do_search(board, our_head, item):
-    distance = 0
     our_head
     moves = []
     # TODO: remove direction that tail is in
@@ -61,18 +60,20 @@ def __do_search(board, our_head, item):
         __increase_weight(potential_moves, 'north', 1.5)
         __increase_weight(potential_moves, 'south', 1.5)
 
+    distance = x_delta + y_delta
 
     move = __get_best_move(potential_moves)
     return distance, move
 
 def __find_enemy_snakes(board, our_head, moves):
-    if board[our_head[0]][our_head[1] + 1] == 3 or board[our_head[0]][our_head[1] + 1] == 4: # other snake above/north
+
+    if board[our_head[0]][our_head[1] + 1] == 3 or board[our_head[0]][our_head[1] + 1] == 4 or board[our_head[0]][our_head[1] + 1] == 2: # other snake above/north
         __increase_weight(moves, 'north', 0)
-    if board[our_head[0] + 1][our_head[1]] == 3 or board[our_head[0] + 1][our_head[1]] == 4: # other snake right/east
+    if board[our_head[0] + 1][our_head[1]] == 3 or board[our_head[0] + 1][our_head[1]] == 4 or board[our_head[0] + 1][our_head[1]] == 2: # other snake right/east
         __increase_weight(moves, 'east', 0)
-    if board[our_head[0] - 1][our_head[1]] == 3 or board[our_head[0] - 1][our_head[1]] == 4: # other snake left/west
+    if board[our_head[0] - 1][our_head[1]] == 3 or board[our_head[0] - 1][our_head[1]] == 4 or board[our_head[0] - 1][our_head[1]] == 2: # other snake left/west
         __increase_weight(moves, 'west', 0)
-    if board[our_head[0]][our_head[1] - 1] == 3 or board[our_head[0]][our_head[1] - 1] == 4: # other snake down/south
+    if board[our_head[0]][our_head[1] - 1] == 3 or board[our_head[0]][our_head[1] - 1] == 4 or board[our_head[0]][our_head[1] - 1] == 2: # other snake down/south
         __increase_weight(moves, 'south', 0)
 
 def __detect_board_limits(board, our_head, moves):
