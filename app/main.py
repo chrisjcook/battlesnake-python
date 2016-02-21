@@ -125,21 +125,30 @@ def end_game(data):
                     elif board[my_head[0]][my_head[1-1]] == 0:
                         return {'move': 'north'}
             else:
-                x_val = quadrant_coord[0] - my_head[0]
-                y_val = quadrant_coord[1] - my_head[1]
-                x_min_dist = abs(x_val)
-                y_min_dist = abs(y_val)
-                if x_min_dist < y_min_dist:
-                    if x_val < 0:
-                        #move right
-                        return {'move': 'west'}
+                if board[quadrant_coord[0]][quadrant_coord[1]] == 0:
+                    x_val = quadrant_coord[0] - my_head[0]
+                    y_val = quadrant_coord[1] - my_head[1]
+                    x_min_dist = abs(x_val)
+                    y_min_dist = abs(y_val)
+                    if x_min_dist < y_min_dist:
+                        if x_val < 0:
+                            #move right
+                            return {'move': 'west'}
+                        else:
+                            return {'move': 'east'}
                     else:
-                        return {'move': 'east'}
-                else:
-                    if y_val < 0:
-                        return {'move': 'up'}
-                    else:
-                        return {'move': 'down'}
+                        if y_val < 0:
+                            return {'move': 'up'}
+                        else:
+                            return {'move': 'down'}
+                elif board[my_head[0]+1][my_head[1]] == 0:
+                    return {'move': 'east'}
+                elif board[my_head[0]][my_head[1+1]] == 0:
+                    return {'move': 'south'}
+                elif board[my_head[0]-1][my_head[1]] == 0:
+                    return {'move': 'west'}
+                elif board[my_head[0]][my_head[1-1]] == 0:
+                    return {'move': 'north'}
     return {
         'move': 'north',
         'taunt': 'ARBOK!'
