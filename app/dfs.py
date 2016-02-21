@@ -67,13 +67,13 @@ def __do_search(board, our_head, item):
 
 def __find_enemy_snakes(board, our_head, moves):
 
-    if board[our_head[0]][our_head[1] + 1] == 3 or board[our_head[0]][our_head[1] + 1] == 4 or board[our_head[0]][our_head[1] + 1] == 2: # other snake above/north
+    if board[our_head[0]][our_head[1] + 1] == 3 or board[our_head[0]][our_head[1] + 1] == 4 or board[our_head[0]][our_head[1] - 1] == 2: # other snake above/north
         __increase_weight(moves, 'north', 0)
     if board[our_head[0] + 1][our_head[1]] == 3 or board[our_head[0] + 1][our_head[1]] == 4 or board[our_head[0] + 1][our_head[1]] == 2: # other snake right/east
         __increase_weight(moves, 'east', 0)
     if board[our_head[0] - 1][our_head[1]] == 3 or board[our_head[0] - 1][our_head[1]] == 4 or board[our_head[0] - 1][our_head[1]] == 2: # other snake left/west
         __increase_weight(moves, 'west', 0)
-    if board[our_head[0]][our_head[1] - 1] == 3 or board[our_head[0]][our_head[1] - 1] == 4 or board[our_head[0]][our_head[1] - 1] == 2: # other snake down/south
+    if board[our_head[0]][our_head[1] - 1] == 3 or board[our_head[0]][our_head[1] - 1] == 4 or board[our_head[0]][our_head[1] + 1] == 2: # other snake down/south
         __increase_weight(moves, 'south', 0)
 
 def __detect_board_limits(board, our_head, moves):
