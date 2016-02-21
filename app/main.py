@@ -185,7 +185,7 @@ def get_grid_line():
         grid_1.append([2, y])
         grid_2.append([board_width-2, y])
     for x in x_values:
-        grid_3.append(x, 2)
+        grid_3.append([x, 2])
         grid_4.append(x, board_height-2)
     grid_1.extend(grid_4+grid_2+grid_3)
     return grid_1
